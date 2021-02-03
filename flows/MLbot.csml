@@ -1,0 +1,34 @@
+
+start:
+  say "Hello, comment t'appelles tu?"
+  hold
+  remember name = event
+  goto play
+
+play:
+  say "Donne moi un mot {{name}}"
+  hold
+  remember q = event
+
+  remember url = "http://api.giphy.com/v1/gifs/search?api_key=xb2sowRAV54xJjWai7MLoxXItJsKa4jx&q={{q}}&limit=5"
+  do req= HTTP(url).get().send()
+  do giphy = req.data[0].images.downsized.url
+  
+  say "Voici ton gif {{name}}!"
+  say Image (giphy)
+
+  say Question ("En veux-tu un autre?",
+  buttons =[Button("Oui!") as btnYes, Button("Non je vais m'en passer") as btnNo,])
+  hold
+
+  if (event.match(btnYes)) {
+    say "Super, rejouons alors!"
+    say Typing(1500)
+    goto play
+  }
+  if (event.match(btnNo)){
+    say "Too bad! A la prochaine alors! 👋🏻"
+    goto end
+  }
+
+ 

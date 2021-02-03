@@ -1,0 +1,21 @@
+{
+  "id": "f5970097-313d-4fd2-be9d-06ba990fabf0",
+  "name": "giphyBot",
+  "description": null,
+  "default_flow": "Default",
+  "flows": [
+    {
+      "name": "Default",
+      "description": "Simple barebones flow. Code your own chatbot from this template!",
+      "commands": []
+    },
+    {
+      "name": "MLbot",
+      "description": "Simple barebones flow. Code your own chatbot from this template!",
+      "commands": []
+    }
+  ],
+  "files": [],
+  "functions": [],
+  "apps": []
+}
