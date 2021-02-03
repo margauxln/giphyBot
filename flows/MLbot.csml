@@ -9,10 +9,11 @@ play:
   say "Donne moi un mot {{name}}"
   hold
   remember q = event
-
+  remember range = [0,1,2,3,4]
+  do i = OneOf(range)
   remember url = "http://api.giphy.com/v1/gifs/search?api_key=xb2sowRAV54xJjWai7MLoxXItJsKa4jx&q={{q}}&limit=5"
   do req= HTTP(url).get().send()
-  do giphy = req.data[0].images.downsized.url
+  do giphy = req.data[i].images.downsized.url
   
   say "Voici ton gif {{name}}!"
   say Image (giphy)
